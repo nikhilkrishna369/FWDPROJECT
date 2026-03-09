@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TravelPro — Your World, Booked.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-shell" id="appShell">
+
+  <!-- ═══════ SIDEBAR ═══════ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="brand-icon">◈</span>
+      <span class="brand-text">TravelPro</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Main</div>
+      <a class="nav-item" id="nav-dashboard" onclick="navigate('dashboard')">
+        <span class="nav-icon">⌂</span><span>Dashboard</span>
+      </a>
+      <div class="nav-section-label">Book</div>
+      <a class="nav-item" id="nav-flights"   onclick="navigate('flights')">
+        <span class="nav-icon">✦</span><span>Flights</span>
+      </a>
+      <a class="nav-item" id="nav-hotels"    onclick="navigate('hotels')">
+        <span class="nav-icon">▦</span><span>Hotels</span>
+      </a>
+      <a class="nav-item" id="nav-cars"      onclick="navigate('cars')">
+        <span class="nav-icon">◉</span><span>Car Rental</span>
+      </a>
+      <a class="nav-item" id="nav-packages"  onclick="navigate('packages')">
+        <span class="nav-icon">◈</span><span>Packages</span>
+      </a>
+      <div class="nav-section-label">Manage</div>
+      <a class="nav-item" id="nav-itinerary" onclick="navigate('itinerary')">
+        <span class="nav-icon">≡</span><span>Itinerary</span>
+      </a>
+      <a class="nav-item" id="nav-history"   onclick="navigate('history')">
+        <span class="nav-icon">◷</span><span>History</span>
+      </a>
+      <a class="nav-item" id="nav-profile"   onclick="navigate('profile')">
+        <span class="nav-icon">◯</span><span>Profile</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-action" onclick="toggleTheme()">
+        <span id="themeIcon">◑</span> Theme
+      </button>
+      <button class="sidebar-action danger" onclick="logout()">
+        <span>⏻</span> Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Hamburger -->
+  <button class="hamburger" id="hamburger" onclick="toggleSidebar()">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Sidebar overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+  <!-- ═══════ MAIN ═══════ -->
+  <main class="main" id="mainContent">
+
+    <!-- ══ LOGIN ══ -->
+    <section id="login" class="screen active">
+      <div class="auth-page">
+        <div class="auth-visual">
+          <div class="auth-visual-inner">
+            <div class="av-globe">◈</div>
+            <h1 class="av-headline">The world<br>is waiting.</h1>
+            <div class="av-destinations">
+              <span>Paris</span><span>Tokyo</span><span>Dubai</span>
+              <span>Bali</span><span>Sydney</span><span>New York</span>
+            </div>
+          </div>
+        </div>
+        <div class="auth-form-panel">
+          <div class="auth-form-wrap">
+            <div class="auth-logo">◈ TravelPro</div>
+            <h2 class="auth-title">Welcome back</h2>
+            <p class="auth-subtitle">Sign in to continue your journey</p>
+            <div class="form-field">
+              <label>Email address</label>
+              <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <div class="form-field">
+              <label>Password</label>
+              <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+            </div>
+            <button class="btn-primary full-width" onclick="login()">
+              Sign In <span class="btn-arrow">→</span>
+            </button>
+            <p class="auth-switch">New here? <span class="auth-link" onclick="showRegister()">Create account</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ REGISTER ══ -->
+    <section id="register" class="screen">
+      <div class="auth-page">
+        <div class="auth-visual">
+          <div class="auth-visual-inner">
+            <div class="av-globe">◈</div>
+            <h1 class="av-headline">Start your<br>adventure.</h1>
+            <div class="av-destinations">
+              <span>Paris</span><span>Tokyo</span><span>Dubai</span>
+              <span>Bali</span><span>Sydney</span><span>New York</span>
+            </div>
+          </div>
+        </div>
+        <div class="auth-form-panel">
+          <div class="auth-form-wrap">
+            <div class="auth-logo">◈ TravelPro</div>
+            <h2 class="auth-title">Create account</h2>
+            <p class="auth-subtitle">Join thousands of travellers worldwide</p>
+            <div class="form-field">
+              <label>Full name</label>
+              <input type="text" id="regName" placeholder="Jane Doe" autocomplete="name">
+            </div>
+            <div class="form-field">
+              <label>Email address</label>
+              <input type="email" id="regEmail" placeholder="you@example.com" autocomplete="email">
+            </div>
+            <div class="form-field">
+              <label>Password</label>
+              <input type="password" id="regPassword" placeholder="Min. 6 characters" autocomplete="new-password">
+            </div>
+            <button class="btn-primary full-width" onclick="register()">
+              Create Account <span class="btn-arrow">→</span>
+            </button>
+            <p class="auth-switch">Already have an account? <span class="auth-link" onclick="showLogin()">Sign in</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ DASHBOARD ══ -->
+    <section id="dashboard" class="screen">
+      <div class="page-header">
+        <div>
+          <p class="page-eyebrow">Overview</p>
+          <h2 class="page-title" id="dashGreeting">Good morning</h2>
+        </div>
+        <div id="dailyQuoteBox" class="quote-pill"></div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-tile" onclick="navigate('flights')">
+          <div class="stat-icon flight-bg">✦</div>
+          <div class="stat-info">
+            <span class="stat-num" id="flightCount">0</span>
+            <span class="stat-label">Flights</span>
+          </div>
+        </div>
+        <div class="stat-tile" onclick="navigate('hotels')">
+          <div class="stat-icon hotel-bg">▦</div>
+          <div class="stat-info">
+            <span class="stat-num" id="hotelCount">0</span>
+            <span class="stat-label">Hotels</span>
+          </div>
+        </div>
+        <div class="stat-tile" onclick="navigate('cars')">
+          <div class="stat-icon car-bg">◉</div>
+          <div class="stat-info">
+            <span class="stat-num" id="carCount">0</span>
+            <span class="stat-label">Cars</span>
+          </div>
+        </div>
+        <div class="stat-tile" onclick="navigate('packages')">
+          <div class="stat-icon pkg-bg">◈</div>
+          <div class="stat-info">
+            <span class="stat-num" id="packageCount">0</span>
+            <span class="stat-label">Packages</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="dash-row">
+        <div class="glass-card spend-hero">
+          <p class="card-label">Total Spend</p>
+          <p class="spend-num" id="totalSpend">$0</p>
+          <div class="spend-bar-wrap">
+            <div class="spend-bar" id="spendBar"></div>
+          </div>
+        </div>
+        <div class="glass-card upcoming-card">
+          <p class="card-label">Upcoming Trips</p>
+          <ul id="upcomingTrips" class="trip-list"><li class="empty-note">No upcoming trips yet</li></ul>
+        </div>
+      </div>
+
+      <div class="glass-card route-card">
+        <p class="card-label">Route Finder <span class="algo-tag"></span></p>
+        <div class="route-row">
+          <select id="routeFrom">
+            <option value="">From…</option>
+            <option>Paris</option><option>Dubai</option><option>New York</option>
+            <option>Tokyo</option><option>Bali</option><option>London</option><option>Sydney</option>
+          </select>
+          <span class="route-arrow">→</span>
+          <select id="routeTo">
+            <option value="">To…</option>
+            <option>Paris</option><option>Dubai</option><option>New York</option>
+            <option>Tokyo</option><option>Bali</option><option>London</option><option>Sydney</option>
+          </select>
+          <button class="btn-primary sm" onclick="showRoute()">Find</button>
+        </div>
+        <div id="routeResult" class="route-result"></div>
+      </div>
+    </section>
+
+    <!-- ══ FLIGHTS ══ -->
+    <section id="flights" class="screen">
+      <div class="page-header">
+        <div>
+          <p class="page-eyebrow">Book</p>
+          <h2 class="page-title">Flights ✦</h2>
+        </div>
+      </div>
+      <div class="booking-card">
+        <div class="field-group">
+          <div class="form-field">
+            <label>From</label>
+            <input type="text" id="from" placeholder="e.g. London">
+          </div>
+          <div class="form-field">
+            <label>To</label>
+            <input type="text" id="to" placeholder="e.g. Dubai">
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="form-field">
+            <label>Date</label>
+            <input type="date" id="flightDate">
+          </div>
+          <div class="form-field">
+            <label>Seat Class</label>
+            <select id="seatClass" onchange="previewFlightPrice()">
+              <option value="Economy">Economy — $200</option>
+              <option value="Business">Business — $500</option>
+              <option value="First Class">First Class — $900</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Coupon Code</label>
+          <input type="text" id="flightCoupon" placeholder="Try SAVE10, TRAVEL20, VIP30" oninput="previewFlightPrice()">
+        </div>
+        <div id="flightPrice" class="price-preview"></div>
+        <button class="btn-primary" onclick="bookFlight()">Confirm Booking →</button>
+      </div>
+    </section>
+
+    <!-- ══ HOTELS ══ -->
+    <section id="hotels" class="screen">
+      <div class="page-header">
+        <div>
+          <p class="page-eyebrow">Book</p>
+          <h2 class="page-title">Hotels ▦</h2>
+        </div>
+      </div>
+      <div class="booking-card">
+        <div class="form-field">
+          <label>City</label>
+          <input type="text" id="hotelCity" placeholder="e.g. Paris">
+        </div>
+        <div class="field-group">
+          <div class="form-field">
+            <label>Check-in</label>
+            <input type="date" id="checkIn" onchange="previewHotelPrice()">
+          </div>
+          <div class="form-field">
+            <label>Check-out</label>
+            <input type="date" id="checkOut" onchange="previewHotelPrice()">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Star Rating</label>
+          <select id="hotelStars" onchange="previewHotelPrice()">
+            <option value="3">3 Star — $100/night</option>
+            <option value="4">4 Star — $180/night</option>
+            <option value="5">5 Star — $300/night</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Coupon Code</label>
+          <input type="text" id="hotelCoupon" placeholder="Try SAVE10, TRAVEL20, VIP30" oninput="previewHotelPrice()">
+        </div>
+        <div id="hotelPrice" class="price-preview"></div>
+        <button class="btn-primary" onclick="bookHotel()">Confirm Booking →</button>
+      </div>
+    </section>
+
+    <!-- ══ CARS ══ -->
+    <section id="cars" class="screen">
+      <div class="page-header">
+        <div>
+          <p class="page-eyebrow">Book</p>
+          <h2 class="page-title">Car Rental ◉</h2>
+        </div>
+      </div>
+      <div class="booking-card">
+        <div class="field-group">
+          <div class="form-field">
+            <label>City</label>
+            <input type="text" id="carCity" placeholder="e.g. Tokyo">
+          </div>
+          <div class="form-field">
+            <label>Pick-up Date</label>
+            <input type="date" id="carDate">
+          </div>
+        </div>
+        <div class="form-field">
+          <label>Car Type</label>
+          <select id="carType" onchange="previewCarPrice()">
+            <option value="Sedan">Sedan — $60/day</option>
+            <option value="SUV">SUV — $90/day</option>
+            <option value="Luxury">Luxury — $150/day</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label>Coupon Code</label>
+          <input type="text" id="carCoupon" placeholder="Try SAVE10, TRAVEL20, VIP30" oninput="previewCarPrice()">
+        </div>
+        <div id="carPrice" class="price-preview"></div>
+        <button class="btn-primary" onclick="bookCar()">Confirm Booking →</button>
+      </div>
+    </section>
+
+    <!-- ══ PACKAGES ══ -->
+    <section id="packages" class="screen">
+      <div class="page-header">
+        <div>
+          <p class="page-eyebrow">Explore</p>
+          <h2 class="page-title">Packages ◈</h2>
+        </div>
+        <div class="search-pill">
+          <input type="number" id="pkgSearchPrice" placeholder="Search by price…">
+          <button class="btn-primary sm" onclick="searchPackageByPrice()">Search</button>
+        </div>
+      </div>
+      <div id="pkgSearchResult" class="result-banner"></div>
+      <div class="packages-grid" id="packagesGrid"></div>
+    </section>
+
+    <!-- ══ ITINERARY ══ -->
+    <section id="itinerary" class="screen">
+      <div class="page-header">
+        <div>
+          <p class="page-eyebrow">Plan</p>
+          <h2 class="page-title">Itinerary ≡</h2>
+        </div>
+      </div>
+      <div class="glass-card">
+        <p class="card-label">Day Planner <span class="algo-tag"></span></p>
+        <div class="it-add-row">
+          <input type="text" id="itDayTitle" placeholder="Day title (e.g. Day 1 – Arrival)">
+          <input type="text" id="itDayNote"  placeholder="Activities / notes">
+          <button class="btn-primary sm" onclick="addItDay()">+ Add</button>
+        </div>
+        <div id="itDayList" class="it-day-list"></div>
+      </div>
+      <div class="glass-card">
+        <p class="card-label">Free-form Notes</p>
+        <textarea id="itineraryText" placeholder="Write anything — packing list, reminders, ideas…"></textarea>
+        <button class="btn-primary sm" onclick="saveItinerary()" style="margin-top:12px">Save Notes</button>
+      </div>
+    </section>
+
+    <!-- ══ HISTORY ══ -->
+    <section id="history" class="screen">
+      <div class="page-header">
+        <div>
+          <p class="page-eyebrow">Records</p>
+          <h2 class="page-title">Booking History ◷</h2>
+        </div>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="hist-stats-bar" id="histStatsRow"></div>
+
+      <!-- Main layout -->
+      <div class="hist-layout">
+
+        <!-- LEFT column: filters + list -->
+        <div class="hist-left">
+
+          <!-- Filter toolbar -->
+          <div class="hist-toolbar glass-card">
+            <div class="toolbar-row">
+              <div class="search-input-wrap">
+                <span class="search-icon">⌕</span>
+                <input type="text" id="histSearchInput" placeholder="Search bookings…" oninput="liveSearchHistory()">
+                <button class="clear-search-btn" id="clearSearchBtn" onclick="clearSearch()" title="Clear">✕</button>
+              </div>
+            </div>
+            <div class="toolbar-row split">
+              <select id="histFilterType" onchange="applyHistoryFilters()">
+                <option value="all">All Types</option>
+                <option value="Flight">✦ Flights</option>
+                <option value="Hotel">▦ Hotels</option>
+                <option value="Car">◉ Cars</option>
+                <option value="Package">◈ Packages</option>
+              </select>
+              <select id="histSortBy" onchange="applyHistoryFilters()">
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="price-high">Price: High → Low</option>
+                <option value="price-low">Price: Low → High</option>
+              </select>
+            </div>
+            <div class="toolbar-row price-search-row">
+              <span class="algo-tag"></span>
+              <input type="number" id="histSearchPrice" placeholder="Exact price ($)">
+              <button class="btn-primary sm" onclick="searchHistoryByPrice()">Search</button>
+              <button class="btn-ghost sm" onclick="clearPriceSearch()">Clear</button>
+            </div>
+          </div>
+
+          <div id="searchResultBanner" class="result-banner"></div>
+
+          <ul id="historyList" class="history-list"></ul>
+          <div id="emptyHistory" class="empty-state" style="display:none">
+            <div class="empty-icon">◷</div>
+            <p>No bookings match your filters</p>
+          </div>
+        </div>
+
+        <!-- RIGHT column: DSA panels -->
+        <!--<div class="hist-right"-->
+
+          <!-- Payment Queue 
+          <div class="glass-card dsa-card">
+            <div class="dsa-header">
+              <div class="dsa-header-text">
+                <p class="card-label">Processing Queue <span class="algo-tag">Queue</span></p>
+                <p class="dsa-desc">Bookings confirmed in order received (FIFO)</p>
+              </div>
+            </div>
+            <div id="queueVisual" class="queue-visual">
+              <div class="ds-empty">Queue is empty</div>
+            </div>
+            <div class="queue-legend">
+              <span>← Front (next out)</span>
+              <span>Rear (new in) →</span>
+            </div>
+          </div>
+
+          <-- Undo Stack -
+          <div class="glass-card dsa-card">
+            <div class="dsa-header">
+              <div class="dsa-header-text">
+                <p class="card-label">Cancelled Stack <span class="algo-tag">Stack</span></p>
+                <p class="dsa-desc">Most recently cancelled restored first (LIFO)</p>
+              </div>
+            </div>
+            <div id="stackVisual" class="stack-visual">
+              <div class="ds-empty">Stack is empty</div>
+            </div>
+            <button onclick="undoCancel()" class="btn-undo" id="undoBtn" disabled>
+              ↩ Undo Last Cancel
+            </button>
+          </div>
+
+        </div>
+      </div>-->
+    </section>
+
+    <!-- ══ PROFILE ══ -->
+    <section id="profile" class="screen">
+      <div class="page-header">
+        <div>
+          <p class="page-eyebrow">Account</p>
+          <h2 class="page-title">Profile ◯</h2>
+        </div>
+      </div>
+      <div class="glass-card profile-hero">
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar" id="profileAvatar"></div>
+          <div class="profile-status-dot"></div>
+        </div>
+        <div id="profileInfo" class="profile-info"></div>
+      </div>
+      <div class="glass-card">
+        <p class="card-label">Edit Profile</p>
+        <div class="field-group">
+          <div class="form-field">
+            <label>Full name</label>
+            <input type="text" id="editName" placeholder="Your name">
+          </div>
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" id="editEmail" placeholder="your@email.com">
+          </div>
+        </div>
+        <button class="btn-primary sm" onclick="saveProfile()" style="margin-top:8px">Save Changes →</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ═══ TOAST CONTAINER ═══ -->
+<div id="toastContainer" class="toast-container"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
